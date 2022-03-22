@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- [ Hover-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div style="display: flex; justify-content: space-around;" class="card-header">
+                                <div class="form-inline">
+                                    <h3>Sửa môn học</h3>
+                                </div>
+                            </div>
+                            <div class="table-border-style card-block">
+
+                                <form action="" method="POST" role="form">
+
+                                    {% for mon in tenmon %}
+                                    <input type="text" name="name" id="inputsua" class="form-control"
+                                        required="required" placeholder="{{mon[1]}}">
+                                    {% endfor %}
+
+
+                                    <button style="margin-top: 10px;" type="submit"
+                                        class="btn btn-primary">Submit</button>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

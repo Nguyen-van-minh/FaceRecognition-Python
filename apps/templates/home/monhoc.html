@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+{% block title %} UI Tables {% endblock %}
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- [ Hover-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="form-inline">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        Thêm môn học
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-border-style card-block">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên môn</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for mon in cacmon %}
+                                            <tr>
+                                                <td>{{mon[1]}}</td>
+                                                <td>
+                                                    <a href='xoaMonHoc/{{ mon[0] }}'
+                                                        class="btn btn-outline-danger btn-sm">Xóa</a>
+
+                                                    <a class="btn btn-outline-warning btn-sm"
+                                                        href='suamonhoc/{{ mon[0] }}'>Sửa</a>
+
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm môn học</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" role="form">
+                                <div class="form-group">
+                                    <label for="">Tên môn</label>
+                                    <input name="tenmon" type="text" class="form-control" id="tenmon">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

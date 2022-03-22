@@ -1,0 +1,107 @@
+{% extends "layouts/base.html" %}
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="pcoded-content">
+  <div class="pcoded-inner-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <h5 class="m-b-10">Danh sách sinh viên</h5>
+            </div>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="index.html"><i class="feather icon-home"></i></a>
+              </li>
+              <li class="breadcrumb-item"><a href="#!">Danh sách</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="main-body">
+      <div class="page-wrapper">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+          <!-- [ Hover-table ] start -->
+          <div class="col-xl-12">
+            <div class="card">
+              <div class="card-header">
+                <h5>{{name}}</h5>
+                <!-- <h5>Hover Table</h5> -->
+                <form class="form-inline" method="POST" action="bangsinhvien">
+
+                  <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" id="inputTimKiem" placeholder="Nhập MSV" name="search" />
+                  </div>
+                  <div class="form-group mx-sm-3 mb-2">
+                    <select name="sort" id="input" class="form-control" required="required">
+                      <option style="display:none;" selected disabled="disabled">Sort...</option>
+                      <option value="A>>Z">A >> Z</option>
+                      <option value="Z>>A">Z >> A</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-info mb-2">
+                    Search
+                  </button>
+                </form>
+                <button class="btn btn-info mb-2">
+                  <a href="/diemdanh" class="nav-link">
+                    <span class="pcoded-micon">
+                      <i class="feather icon-users"></i>
+                    </span>
+                    <span class="pcoded-mtext">Diểm danh</span>
+                  </a>
+                </button>
+
+
+              </div>
+              <div class="table-border-style card-block">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>STT</th>
+                        <th>MSV</th>
+                        <th>First Name</th>
+                        <th>Last name</th>
+                        <th>DOB</th>
+                        <th>CN</th>
+                        <!-- <th>{{a}}</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i,row in rows %}
+                      <tr>
+                        <th scope="row">{{row['No']}}</th>
+                        <td>{{row['student_code']}}</td>
+                        <td>{{row['First_name']}}</td>
+                        <td>{{row['Last_name']}}</td>
+                        <td>{{row['DOB']}}</td>
+                        <td>{{row['CN']}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- [ Hover-table ] end -->
+        </div>
+        <!-- [ Main Content ] end -->
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

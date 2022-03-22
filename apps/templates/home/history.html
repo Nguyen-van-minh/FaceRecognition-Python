@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- [ Hover-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div style="display: flex; justify-content: space-around;" class="card-header">
+                                <div class="form-inline">
+
+                                    <div style="margin: 0px 0px 2px 100px;">
+                                        <form action="" method="POST" role="form">
+                                            <select name="monhoc" id="input" class="form-control" required="required">
+                                                <option value="">Chọn môn học</option>
+                                                {% for lop in caclop %}
+                                                <option value="{{lop[0]}}">{{lop[1]}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <button style="margin :0;" type="submit"
+                                                class="btn btn-primary">Chọn</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-border-style card-block">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã SV</th>
+                                                <th>Họ</th>
+                                                <th>Tên</th>
+                                                <th>Thời gian</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for hocsinh in cachocsinh %}
+                                            <tr>
+                                                <td>{{hocsinh[1]}}</td>
+                                                <td>{{hocsinh[3]}}</td>
+                                                <td>{{hocsinh[4]}}</td>
+                                                <td>
+                                                    {{hocsinh[5]}}
+                                                </td>
+                                            </tr>
+
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

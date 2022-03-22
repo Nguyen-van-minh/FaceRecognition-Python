@@ -1,0 +1,144 @@
+{% extends "layouts/base.html" %}
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- [ Hover-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div style="display: flex; justify-content: space-around;" class="card-header">
+                                <div class="form-inline">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        Thêm học sinh
+                                    </button>
+
+                                    <div style="margin: 0px 0px 2px 100px;">
+                                        <form action="" method="POST" role="form">
+                                            <select name="monhoc" id="input" class="form-control" required="required">
+                                                <option value="">Chọn môn học</option>
+                                                {% for lop in caclop %}
+                                                <option value="{{lop[0]}}">{{lop[1]}}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <button style="margin :0;" type="submit"
+                                                class="btn btn-primary">Chọn</button>
+                                        </form>
+                                    </div>
+
+                                    <div style="margin: 0px 0px 2px 100px;">
+                                        <form action="" method="POST" role="form">
+                                            <input name="reset" type="hidden" value="reset">
+                                            <button style="margin :0;" type="submit"
+                                                class="btn btn-warning">Reset</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                {% if check %}
+                                <a href='diemdanh/{{ idMonhoc }}' class="btn btn-outline-success btn-sm">Điểm
+                                    danh</a>
+
+                                {% endif %}
+                            </div>
+                            <div class="table-border-style card-block">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã SV</th>
+                                                <th>Họ</th>
+                                                <th>Tên</th>
+                                                <th>Điểm danh</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for hocsinh in cachocsinh %}
+                                            <tr>
+                                                <td>{{hocsinh[1]}}</td>
+                                                <td>{{hocsinh[3]}}</td>
+                                                <td>{{hocsinh[4]}}</td>
+                                                {% if hocsinh[5] == 1 %}
+                                                <td><i style="font-size: 20px; color: red;"
+                                                        class="feather icon-check-circle"></i></td>
+                                                {% else %}
+                                                <td><i style="font-size: 20px; color: green;"
+                                                        class="feather icon-check-circle"></i></td>
+                                                {% endif %}
+                                                <td>
+                                                <td>
+                                                    <a href='deleteStudent/{{ hocsinh[0] }}'
+                                                        class="btn btn-outline-danger btn-sm">Delete</a>
+                                                </td>
+                                                </td>
+                                            </tr>
+
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" role="form">
+                                <div class="form-group">
+                                    <label for="">Mã SV</label>
+                                    <input name="studenCode" type="text" class="form-control" id="studenCode">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Họ</label>
+                                    <input name="firtName" type="text" class="form-control" id="firtName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tên</label>
+                                    <input name="lastName" type="text" class="form-control" id="lastName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Môn</label>
+                                    <select name="classCode" id="input" class="form-control" required="required">
+                                        <option value="">Chọn môn học</option>
+                                        {% for lop in caclop %}
+                                        <option value="{{lop[0]}}">{{lop[1]}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8  offset-lg-2">
+                <h3 class="mt-5">camera</h3>
+                <img src="{{ url_for('authentication_blueprint.video_feed', classCode = id) }}" width="100%">
+
+                <div>{{ListStuden}}</div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
